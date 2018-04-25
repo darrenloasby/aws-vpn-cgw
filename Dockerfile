@@ -1,7 +1,6 @@
-#FROM resin/rpi-raspbian:jessie
-FROM ubuntu:trusty
+FROM ubuntu:artful
 
-MAINTAINER Pahud Hsieh <pahudnet@gmail.com>
+MAINTAINER Darren Loasby <darren.loasby@gmail.com>
 
 ENV \
   DEBIAN_FRONTEND=noninteractive \
@@ -15,10 +14,9 @@ WORKDIR /root
 
 ADD startup.sh /
 ADD ./etc/ipsec.conf /etc/
-ADD ./etc/ipsec.d/home-to-aws.conf /etc/ipsec.d/
+ADD ./etc/ipsec.d/vultr-to-aws.conf /etc/ipsec.d/
 
 
 EXPOSE 500 4500
 
 CMD ["/startup.sh"]
-#CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf",  "--nodaemon"]
